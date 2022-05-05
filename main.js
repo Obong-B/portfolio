@@ -37,7 +37,6 @@ document.addEventListener('scroll', ()=> {
 // Show "Arrow up" Button when scrolling down
 const arrowUp = document.querySelector('.arrow__up');
 document.addEventListener('scroll', () => {
-    console.log(window.scrollY);
     if(window.scrollY > homeHeight/2){
         arrowUp.classList.add('visible');
     }
@@ -51,7 +50,30 @@ arrowUp.addEventListener('click', () => {
     scrollIntoView("#home");
 });
 
+// project filltering and animation
+const workBtnContaier = document.querySelector('.work__categories');
+const projectContaier = document.querySelector('.work__projects');
+const projects = document.querySelectorAll('.project');
 
+workBtnContaier.addEventListener('click', (e) => {
+    const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+    if(filter == null){
+        return;
+    }
+    projectContaier.classList.add('anim-out');
+
+    setTimeout(() => {
+        projects.forEach((project) => {
+            if(filter === '*' || filter === project.dataset.type){
+                project.classList.remove('invisible');
+            }
+            else{
+                project.classList.add('invisible');
+            }
+        })
+        projectContaier.classList.remove('anim-out');
+    }, 300);
+});
 
 function scrollIntoView(selector){
     const scrollTo = document.querySelector(selector);
