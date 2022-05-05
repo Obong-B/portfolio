@@ -400,7 +400,7 @@ p {
 
 
 .project__description h3 {
-    color: var(--color-white);
+    color: var(--color-orange);
 }
 
 .project__description h3::after {
@@ -408,9 +408,9 @@ p {
     display: block;
     position: relative;
     left: 50%;
-    width: 25px;
+    width: 50px;
     height: 2px;
-    margin-left: -12px;
+    transform: translateX(-50%);
     margin-top: 8px;
     background-color: var(--color-dark-white);
 }
@@ -515,6 +515,10 @@ p {
         flex-direction: column;
         align-items: flex-start;
     }
+    
+    #navbar.navbar--dark{
+        padding: 16px;
+    }
 
     .navbar__memu {
         flex-direction: column;
@@ -522,6 +526,10 @@ p {
         width: 100%;
         display: none;
         
+    }
+    .navbar__memu.open{
+        display: block;
+        background-color: var(--color-pink);
     }
 
     .about__majors {
