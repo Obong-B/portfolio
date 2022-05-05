@@ -13,12 +13,16 @@ document.addEventListener('scroll', () => {
 
 // Handle scrolling when tapping on the nabvar menu
 const navbarMenu = document.querySelector(".navbar__memu");
+const navbarMenuItems = document.querySelectorAll(".navbar__menu__item");
+
 navbarMenu.addEventListener('click', (event) => {
     const link = event.target.dataset.link;
     if(link == null){
         return;
     }
-    scrollIntoView(link)
+
+    scrollIntoView(link);
+
 });
 
 // Handle click on "contact me" Button on home
@@ -60,6 +64,14 @@ workBtnContaier.addEventListener('click', (e) => {
     if(filter == null){
         return;
     }
+
+    //Remove selection from the previous item and select the new one 
+    const active = document.querySelector('.category__btn.selected');
+    active.classList.remove('selected');
+    const target = 
+        e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
+    target.classList.add('selected');
+    
     projectContaier.classList.add('anim-out');
 
     setTimeout(() => {
